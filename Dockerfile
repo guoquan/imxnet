@@ -24,4 +24,4 @@ VOLUME ["/root/workspace"]
 ENTRYPOINT ["jupyter"]
 
 # Run notebook for ipython defaultly
-CMD ["notebook","--ip=0.0.0.0"]
+CMD ["notebook","--ip=0.0.0.0","--port=8888","--no-browser"]
