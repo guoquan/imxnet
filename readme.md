@@ -35,29 +35,27 @@ Currently, I have just pushed the `develop` tag.
 2. with a command line
  
    If you are using command line, just pull with this tag:
-
     ```bash
 docker pull guoq/imxnet:develop
     ```
-
-    and run it with exposed ports published and the workspace binded to a host directory:
-
+    and run it with exposed ports published. And the workspace binded to a host directory:
     ```bash
 docker run -d -P -v $(pwd):/root/workspace --name=imxnet guoq/imxnet:develop
     ```
-    use the `port` command to find the port of your `jupyter` service:
-    
+    Use `port` to find the port of your `jupyter` service:
     ```bash
 docker port imxnet
     ```
     
-    If you want to specify the port on the host to be use, the default port for `jupyter` is `8888`.
-Add any flag for `jupyter` after the command and they will be sent.
-
+    If you want to specify the port on the host to be use, the default port for `jupyter` is `8888`. The image use `tini` to inisialize the container and defaultly run `jupyter` by CMD:
+    ```bash
+jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser
+    ```
+    Override the command in `run` to specify yours.
+    
     There is a terminal in `jupyter` where you can also interactive the container.
 
     To stop the service, just stop the container:
-    
     ```bash
 docker stop imxnet
     ```
