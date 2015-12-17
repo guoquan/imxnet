@@ -11,6 +11,11 @@ RUN apt-get update && apt-get install -y python-pip
 # install jupyter
 RUN pip install ipython jupyter
 
+# add Tini
+ENV TINI_VERSION v0.8.4
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
+RUN chmod +x /usr/bin/tini
+
 # expose 8888 as jupyter's default
 EXPOSE 8888
 
@@ -20,8 +25,8 @@ WORKDIR /root/workspace
 # Optionally expose the workspace to the host
 VOLUME ["/root/workspace"]
 
-# Run ipython defaultly
-ENTRYPOINT ["jupyter"]
+# Use tini to init the container
+ENTRYPOINT ["/usr/bin/tini", "--"]
 
-# Run notebook for ipython defaultly
-CMD ["notebook","--ip=0.0.0.0","--port=8888","--no-browser"]
+# Run notebook defaultly
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser"]

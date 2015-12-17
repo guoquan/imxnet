@@ -43,7 +43,7 @@ docker pull guoq/imxnet:develop
     and run it with exposed ports published and the workspace binded to a host directory:
 
     ```bash
-docker run -d -P -v $(pwd):/root/workspace --name=imxnet imxnet:develop
+docker run -d -P -v $(pwd):/root/workspace --name=imxnet guoq/imxnet:develop
     ```
     use the `port` command to find the port of your `jupyter` service:
     
