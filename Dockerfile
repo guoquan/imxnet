@@ -1,5 +1,5 @@
 # based on kaixhin/mxnet, which is Ubuntu 14.04 based
-FROM kaixhin/mxnet:latest
+FROM kaixhin/cuda-mxnet:7.0
 MAINTAINER Guo Quan <guoquanscu@gmail.com>
 
 # kaixhin/mxnet already installed: \

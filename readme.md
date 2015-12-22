@@ -12,7 +12,7 @@ Introduction
 
 To further satisfiy the lazy ~~(in fact, I spell this word T-A-L-E-N-T)~~ guys who want to play with MXNet more cosily, for example, with `kitematic` UI controls or with `jupyter` (F/K/A `ipython notebook`) to work in a browser rather than a terminal, as myself, I build this repository.
 
-This repository is based on [kaixhin/mxnet](//hub.docker.com/r/kaixhin/mxnet) and I will be looking at the `CUDA` versions soon.
+This repository is based on [kaixhin/mxnet](//hub.docker.com/r/kaixhin/mxnet) and [kaixhin/cuda-mxnet:7.0](//hub.docker.com/r/kaixhin/cuda-mxnet:7.0). Non-GPU version is available as `latest` tag and GPU version is available as `cuda-7.0` tag. For GPU version, nvidia driver v346.46 is required according to [Kaixhin](//hub.docker.com/u/kaixhin)'s image.
 
 Features
 --
@@ -26,7 +26,7 @@ JUST OPEN YOUR BROWSER AND SEE EVERYTHING READY!
 Usage
 --
 
-Currently, I have just pushed the `develop` tag.
+*Note*: please choose the right `tag` accordingly.
 
 1. with `kitematic`
  
@@ -34,11 +34,12 @@ Currently, I have just pushed the `develop` tag.
 
 2. with a command line
  
-   If you are using command line, just pull with this tag:
+   If you are using command line, just pull with the tag you need:
     ```bash
-docker pull guoq/imxnet:develop
+docker pull guoq/imxnet:<tag>
     ```
-    and run it with exposed ports published. And the workspace binded to a host directory:
+    For example, `latest` for the non-CUDA version, and `<tag>=cuda-7.0` for the CUDA version.
+    Run it with exposed ports published. And the workspace binded to a host directory:
     ```bash
 docker run -d -P -v $(pwd):/root/workspace --name=imxnet guoq/imxnet:develop
     ```
